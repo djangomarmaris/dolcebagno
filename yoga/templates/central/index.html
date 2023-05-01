@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block seo %}
+
+
+<title>Void</title>
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="" />
+
+<link rel="canonical" href=""/>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<meta name="robots" content="index,follow"/>
+
+<meta name="googlebot" content="index,follow"/>
+
+<meta name="author" content="İhsan Gürol Demirtaş">
+
+<meta name="publisher" content="2020.01" />
+
+{% endblock %}
+
+
+
+
+{% block content %}
+<div class="slider-area">
+        <div class="slider-active-3 owl-carousel nav-style-3">
+            {% for product in slider %}
+            <div class="single-slider slider-height-3 bg-gray">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
+                            <div class="slider-content-2 slider-animated-1">
+                                <h1 class="animated">{{product.title}}</h1>
+                                <p class="animated">{{product.low}}</p>
+                                <div class="slider-btn">
+                                    <a class="animated" href="{{product.link}}">Shop Now <i class="sli sli-basket-loaded"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-6">
+                            <div class="slider-single-img-3 slider-animated-1">
+                                <img class="animated" src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+<br>
+ <!---div class="banner-area pt-100 pb-65">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-banner mb-30 scroll-zoom">
+                        <a href="product-details.html"><img class="animated" src="{% static 'assets/img/banner/banner-6.png' %}" alt=""></a>
+                        <div class="banner-content-2 banner-position-5">
+                            <h4>Sound</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-banner mb-30 scroll-zoom">
+                        <a href="product-details.html"><img class="animated" src="{% static 'assets/img/banner/banner-7.png' %}" alt=""></a>
+                        <div class="banner-content-2 banner-position-5">
+                            <h4>Sound</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <div class="single-banner mb-30 scroll-zoom">
+                        <a href="product-details.html"><img class="animated" src="{% static 'assets/img/banner/banner-8.png' %}" alt=""></a>
+                        <div class="banner-content-2 banner-position-5">
+                            <h4>Sound</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div--->
+<div class="product-area pb-150">
+        <div class="container">
+            <div class="section-title text-center pb-60">
+                <h2>Ürünler</h2>
+                <p> Sesin gücünü hissedin I Void ile ile inanılmaz bir deneyim yaşayın.</p>
+            </div>
+            <div class="arrivals-wrap item-wrapper">
+                <div class="ht-products row">
+                    {% for product in products %}
+                    <div class="ht-product ht-product-action-on-hover ht-product-category-right-bottom toggle-item-active col-lg-3 col-md-6 col-sm-6 col-12 mb-30">
+                        <div class="ht-product-inner">
+                            <div class="ht-product-image-wrap">
+                                <a href="{{product.get_absolute_url}}" class="ht-product-image"> <img src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt="Universal Product Style"> </a>
+
+                            </div>
+                            <div class="ht-product-content">
+                                <div class="ht-product-content-inner">
+                                    <div class="ht-product-categories"><a href="#">İncele</a></div>
+                                    <h4 class="ht-product-title"><a href="#">{{product.name}}</a></h4>
+                                    <div class="ht-product-price">
+                                        <span class="new">₺ {{product.price}}</span>
+                                    </div>
+                                    <div class="ht-product-ratting-wrap">
+                                        <span class="ht-product-ratting">
+                                            <span class="ht-product-user-ratting" style="width: 100%;">
+                                                <i class="sli sli-star"></i>
+                                                <i class="sli sli-star"></i>
+                                                <i class="sli sli-star"></i>
+                                                <i class="sli sli-star"></i>
+                                                <i class="sli sli-star"></i>
+                                            </span>
+                                        <i class="sli sli-star"></i>
+                                        <i class="sli sli-star"></i>
+                                        <i class="sli sli-star"></i>
+                                        <i class="sli sli-star"></i>
+                                        <i class="sli sli-star"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ht-product-action">
+                                    <ul>
+                                        <li><a href="#"><i class="sli sli-magnifier"></i><span class="ht-product-action-tooltip">Quick View</span></a></li>
+                                        <li><a href="#"><i class="sli sli-heart"></i><span class="ht-product-action-tooltip">Add to Wishlist</span></a></li>
+                                        <li><a href="#"><i class="sli sli-refresh"></i><span class="ht-product-action-tooltip">Add to Compare</span></a></li>
+                                        <li><a href="#"><i class="sli sli-bag"></i><span class="ht-product-action-tooltip">Add to Cart</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="ht-product-countdown-wrap">
+                                    <div class="ht-product-countdown" data-countdown="2020/01/01"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+                <div class="show-more-btn text-center mt-10 toggle-btn">
+                    <a class="loadMore" href="#">Daha Fazla</a>
+                </div>
+            </div>
+        </div>
+    </div>
+ <div class="testimonial-area pt-80 pb-95 section-margin-1" style="background-image: url({% static 'backlast.jpeg' %});">
+     <br>
+     <br>
+     <br>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 ms-auto me-auto">
+                    <div class="testimonial-active owl-carousel nav-style-1">
+                        <div class="single-testimonial text-center">
+                            <p style="color:white;font-size: 60px;font-weight: bold;">Dinle | Hisset | Bağlan</p>
+                            <div class="client-info">
+                                <img width="100px" src="{% static 'void-logo.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ <div class="blog-area pt-50 pb-65">
+        <div class="container">
+            <div class="section-title text-center pb-60">
+                <h2>Blog </h2>
+                <p> Void Hakkında Herşey</p>
+            </div>
+            <div class="row">
+                {% for product in blogs %}
+                <div class="col-lg-6 col-md-6">
+                    <div class="blog-wrap mb-30 mr-20 text-center scroll-zoom">
+                        <div class="blog-img mb-25">
+                            <a href="{{product.get_absolute_url}}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt=""></a>
+                        </div>
+                        <div class="blog-content">
+                            <h3><a href="{{product.get_absolute_url}}">{{product.title}}</a></h3>
+                                <br>
+                            <p>{{product.mini_info | safe}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block jss %}
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+   {% block seo %}
+
+
+    {% endblock %}
+{% block content %}
+
+<br>
+<div class="product-area pb-150">
+        <div class="container">
+            <div class="section-title text-center pb-60">
+                <h2>{{category.name}}</h2>
+                <p>Markalı Tüm ürünlermiz</p>
+            </div>
+            <div class="arrivals-wrap item-wrapper">
+                <div class="ht-products row">
+                    {% for product in products %}
+                    <div class="ht-product ht-product-action-on-hover ht-product-category-right-bottom toggle-item-active col-lg-3 col-md-6 col-sm-6 col-12 mb-30">
+                        <div class="ht-product-inner">
+                            <div class="ht-product-image-wrap">
+                                <a href="{{product.get_absolute_url}}" class="ht-product-image"> <img src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt="Universal Product Style"> </a>
+
+                            </div>
+                            <div class="ht-product-content">
+                                <div class="ht-product-content-inner">
+                                    <div class="ht-product-categories"><a href="#">İncele</a></div>
+                                    <h4 class="ht-product-title"><a href="#">{{product.name}}</a></h4>
+                                    <div class="ht-product-price">
+                                        <span class="new">${{product.price}}</span>
+                                    </div>
+                                    <div class="ht-product-ratting-wrap">
+                                        <span class="ht-product-ratting">
+                                            <span class="ht-product-user-ratting" style="width: 100%;">
+                                                <i class="sli sli-star"></i>
+                                                <i class="sli sli-star"></i>
+                                                <i class="sli sli-star"></i>
+                                                <i class="sli sli-star"></i>
+                                                <i class="sli sli-star"></i>
+                                            </span>
+                                        <i class="sli sli-star"></i>
+                                        <i class="sli sli-star"></i>
+                                        <i class="sli sli-star"></i>
+                                        <i class="sli sli-star"></i>
+                                        <i class="sli sli-star"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="ht-product-action">
+                                    <ul>
+                                        <li><a href="#"><i class="sli sli-magnifier"></i><span class="ht-product-action-tooltip">Quick View</span></a></li>
+                                        <li><a href="#"><i class="sli sli-heart"></i><span class="ht-product-action-tooltip">Add to Wishlist</span></a></li>
+                                        <li><a href="#"><i class="sli sli-refresh"></i><span class="ht-product-action-tooltip">Add to Compare</span></a></li>
+                                        <li><a href="#"><i class="sli sli-bag"></i><span class="ht-product-action-tooltip">Add to Cart</span></a></li>
+                                    </ul>
+                                </div>
+                                <div class="ht-product-countdown-wrap">
+                                    <div class="ht-product-countdown" data-countdown="2020/01/01"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+                <div class="show-more-btn text-center mt-10 toggle-btn">
+                    <a class="loadMore" href="#">Daha fazla</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

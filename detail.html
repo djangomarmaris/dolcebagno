@@ -1,0 +1,583 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+{% load crispy_forms_tags %}
+
+
+
+{% block css %}
+
+    <link href='/static/lib/main.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://github.com/mozilla-comm/ical.js/releases/download/v1.4.0/ical.js'></script>
+    <script src='/static/lib/main.js'></script>
+    <script src='/static/packages/icalendar/main.global.js'></script>
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth',
+          locale: 'local',
+          timeZone: 'local',
+
+          events: [
+          {% for x in disable %}
+            {
+
+
+              id: '{{x.product}}',
+              title: 'Bu Tarih Aralığı Doludur.',
+              start: '{{x.enter_date|date:"Y-m-d"}}',
+              end: '{{x.out_date|date:"Y-m-d"}}',
+
+            },
+          {% endfor %}
+          ]
+          //validRange: {
+          //  start: '2022-05-05',
+          //  end: '2022-06-01'
+          //}
+        });
+        calendar.render();
+      });
+
+    </script>
+</head>
+{% endblock %}
+
+{% block seo %}
+
+
+<title>Detail</title>
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="" />
+
+<link rel="canonical" href=""/>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<meta name="robots" content="index,follow"/>
+
+<meta name="googlebot" content="index,follow"/>
+
+<meta name="author" content="İhsan Gürol Demirtaş">
+
+<meta name="publisher" content="2020.01" />
+
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+<div class="search-overlay">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="search-layer"></div>
+                    <div class="search-layer"></div>
+                    <div class="search-layer"></div>
+
+                    <div class="search-close">
+                        <span class="search-close-line"></span>
+                        <span class="search-close-line"></span>
+                    </div>
+
+                    <div class="search-form">
+                        <form>
+                            <input type="text" class="input-search" placeholder="Search here...">
+                            <button type="submit"><i class="flaticon-loupe"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div class="slider-area owl-carousel owl-theme">
+            {% for x in images %}
+            <div class="slider-item" style="background-image: url({% if x.image %}{{ x.image.url }}{% else %}{% endif %});">
+                <div class="d-table">
+                    <div class="d-table-cell">
+                        <div class="container">
+                            <div class="slider-content">
+                                <h1>{{x.title}} | By Villacı
+                                    <b>{{x.lowTitle}}</b>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="listing-details-area pt-100 pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="listing-details-wrap">
+                            <div class="listing-category">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="flaticon-touch"></i>
+                                            {% trans 'Detay' %}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="flaticon-gallery"></i>
+                                            {% trans 'Galeri' %}
+                                        </a>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                            <div class="listing-widget listing-widget-desc">
+                                <h3 class="title">{% trans 'Hakkında' %}</h3>
+                                <p>
+                                    {{product.index_info}}
+                                </p>
+
+                                <div class="listing-features">
+                                    <h3 class="features-title">{% trans 'Villa İçerikleri' %}</h3>
+                                    <div class="row">
+
+
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                <h3>{% trans 'Market' %}  | {{product.market}} Km </h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-ship" aria-hidden="true"></i>
+                                                <h3>{% trans 'Deniz ' %} | {{product.seakm}} Km</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-cutlery" aria-hidden="true"></i>
+                                                <h3>{% trans 'Restoran' %} | {{product.restoran}} Km</h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                                <h3>{% trans 'Merkez' %} | {{product.center}} Km</h3>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                         {% if product.pool == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-tint" aria-hidden="true"></i>
+                                                <h3>{% trans 'Havuz' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.wifi == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-wifi" aria-hidden="true"></i>
+                                                <h3>Wi-Fi</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.seaview == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-ship" aria-hidden="true"></i>
+                                                <h3>{% trans 'Deniz Manzarası' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.garden == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-pagelines" aria-hidden="true"></i>
+                                                <h3>{% trans 'Bahçe' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.hairdry == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <h3>{% trans 'Şaç Kurutma' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.diswasher == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-tint" aria-hidden="true"></i>
+                                                <h3>{% trans 'Bulaşık Makinası' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.bbq == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-fire" aria-hidden="true"></i>
+                                                <h3>{% trans 'Mangal' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.balcony == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-home" aria-hidden="true"></i>
+                                                <h3>{% trans 'Balkon' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.jakuzi == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-bath" aria-hidden="true"></i>
+                                                <h3>{% trans 'Jakuzi' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.aricon == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                                <h3>{% trans 'Klima' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.ankastre == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-apple" aria-hidden="true"></i>
+                                                <h3>{% trans 'Fırın' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.kitchen == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-cutlery" aria-hidden="true"></i>
+                                                <h3>{% trans 'Mutfak' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                        {% if product.tv == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-television" aria-hidden="true"></i>
+                                                <h3>{% trans 'Tv' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                         {% if product.waterHeat == True %}
+                                        <div class="col-lg-3 col-md-3">
+                                            <div class="features-card">
+                                                <i class="fa fa-tint" aria-hidden="true"></i>
+                                                <h3>{% trans 'Su Isıtıcısı' %}</h3>
+                                            </div>
+                                        </div>
+                                        {% else %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="listing-widget listing-map">
+                                <h3 class="title">{% trans 'Vİlla Lokasyonu' %}</h3>
+                                <iframe src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q={{product.adress}}+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                            </div>
+                            <h1>{% trans 'Ürün Rezerve günleri' %}</h1>
+                            <div id='calendar'></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="listing-details-side">
+                            <div class="listing-widget-side">
+                                <h3 class="title">{% trans 'Rezervasyon Alanı' %}</h3>
+                                <div class="listing-Booking-form">
+                                    <form method="post">
+                                        {% csrf_token %}
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <i class='bx bx-user'></i>
+                                                    <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="{% trans 'İsim  Soyisim' %}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <i class='flaticon-email-2'></i>
+                                                    <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="E-mail">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <i class='bx bx-phone'></i>
+                                                    <input type="text" name="telephone" id="phone_number" required data-error="Please enter your number" class="form-control" placeholder="{% trans 'Telefon Numaranız' %}">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <i class="flaticon-calendar"></i>
+                                                    <input type="text" name="enter_date" id="id_enter_date" class="form-control" placeholder="{% trans 'Giriş Tarihiniz' %}">
+                                                </div>
+                                            </div>
+
+                                              <div class="col-lg-12">
+                                                <div class="form-group">
+                                                    <i class="flaticon-calendar"></i>
+                                                    <input type="text" name="out_date" id="id_out_date" class="form-control" placeholder="{% trans 'Çıkış Tarihiniz' %}">
+                                                </div>
+                                                <h3 class="price-rate" >{% trans 'Ödenecek Tutar' %} <span><i class="flaticon-verify"></i> <input type="text" id="TextBox3" placeholder="exp. 7 day" /></span></h3>
+                                            </div>
+
+                                            <div class="add-counter">
+                                                <h3>
+                                                   {% trans 'Yetişkin' %}
+                                                </h3>
+                                                <div class="form-input-counter">
+                                                    <span class="minus-btn"><i class='bx bx-minus'></i></span>
+                                                    <input type="text" name="adult" min="1" value="1">
+                                                    <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="add-counter">
+                                                <h3>
+                                                    {% trans 'Çocuk' %}
+                                                </h3>
+                                                <div class="form-input-counter">
+                                                    <span class="minus-btn"><i class='bx bx-minus'></i></span>
+                                                    <input type="text" name="children" min="1" value="1">
+                                                    <span class="plus-btn"><i class='bx bx-plus'></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    <div class="col-lg-12 col-md-12 text-center">
+                                        <button type="submit" class="default-btn border-radius">
+                                            {% trans 'Rezervasyon' %}
+                                            <i class='bx bx-plus'></i>
+                                        </button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="listing-widget-side">
+                                <h3 class="title">{% trans 'Aylık Fiyatları' %}</h3>
+                                <ul class="listing-widget-list">
+                                    <li>{% trans 'Mayıs' %} <span>₺ {{product.price}}</span></li>
+                                    <li>{% trans 'Haziran' %} <span>₺ {{product.price_june}}</span></li>
+                                    <li>{% trans 'Temmuz' %} <span>₺ {{product.price_july}}</span></li>
+                                    <li>{% trans 'Ağustos' %} <span>₺ {{product.price_agust}}</span></li>
+                                    <li>{% trans 'Eylül' %} <span>₺ {{product.price_sept}}</span></li>
+                                    <li>{% trans 'Ekim' %} <span>₺ {{product.price_octo}}</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="listing-widget-side">
+                                <h3 class="title">{% trans 'İletişim' %}</h3>
+                                <ul class="listing-widget-list">
+                                    <li>{% trans 'Adres' %} : <span> {{product.adress}}</span></li>
+                                    <li>{% trans 'Telefon' %} : <span><a href="tel:+905320504578">+90 532 050 45 78</a></span></li>
+                                    <li>{% trans 'Email' %} : <span><a href="mailto:downtown@listing.com">mustafa.serin@byvillaci.com</a></span></li>
+                                    <li>{% trans 'Website' %} : <span> <a href="https://www.byvillaci.com">https://www.byvillaci.com</a></span></li>
+                                </ul>
+                                <ul class="social-link">
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" target="_blank"><i class='bx bxl-instagram'></i></a>
+                                    </li>
+
+
+                                </ul>
+                            </div>
+
+                            <div class="listing-widget-side">
+                                <h3 class="title">{% trans 'Temsilciniz' %} :</h3>
+                                <div class="listing-side-host">
+                                    <img width="100" src="{% if product.owner %}{{ product.owner.url }}{% else %}{% endif %}" alt="Images">
+                                    <h3>Mustafa Serin</h3>
+                                    <span>{% trans 'Profesyonel' %}</span>
+                                </div>
+                                <ul class="side-host-list">
+                                    <li>
+                                        <a href="#"><i class='bx bxs-user'></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class='bx bx-envelope'></i></a>
+                                    </li>
+                                    <li> <span>By Villacı</span></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+
+
+
+{% block jss %}
+<script>
+    $(function () {
+
+        $("#id_enter_date,#id_out_date").datepicker({
+
+            //defaultDate: "1/5/2021",
+            //timepicker: true,
+            //datepicker: true,
+            //dateFormat: 'mm-dd-yy',
+            dateFormat: 'dd-mm-yy',
+            monthNames: ['Jan/Ocak', 'Feb/Şub', 'Marc/Mart', 'Apr/Nisan', 'May/Mayıs', 'June/Haz', 'July/Tem', 'August/Ağus', 'September/Eyl', 'October/Ekm', 'November/Kas', 'December/Aral'],
+            monthNamesShort: ['Ocak', 'Feb', 'Mart', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            dayNamesMin: ["Su/Paz", "Mon/Paz", "Tue/Sal", "Wed/Çar", "Thu/Perş", "Fri/Cum", "Sat/Cum"],
+            //disabledWeekDays: [5, 6],
+            //daysOfWeekDisabled: [0]
+            beforeShowDay: nationalDays,
+             minDate: 0,
+            maxDate: '+1Y+6M',
+            onSelect: function (dateStr) {
+                var min = $(this).datepicker('getDate'); // Get selected date
+                $("#id_out_date").datepicker('option', 'minDate', min || '0'); // Set other min, default to today
+            },
+             minDate: '0',
+            maxDate: '+1Y+6M',
+            onSelect: function (dateStr) {
+                var max = $(this).datepicker('getDate'); // Get selected date
+                $('#datepicker').datepicker('option', 'maxDate', max || '+1Y+6M'); // Set other max, default to +18 months
+                var start = $("#id_enter_date").datepicker("getDate");
+                var ay = start.getMonth() + 1;
+                var end = $("#id_out_date").datepicker("getDate");
+                var days = (end - start) / (1000 * 60 * 60 * 24);
+                //var price = days * {{product.price}};
+                if( ay == 4 ) {
+                   var price = days * {{product.price}};
+                   $("#TextBox3").val(price);
+                } else if( ay == 5 ) {
+                   var price = days * {{product.price}};
+                   $("#TextBox3").val(price);
+                } else if( ay == 6 ) {
+                   var price = days * {{product.price_june}};
+                   $("#TextBox3").val(price);
+                } else if( ay == 7 ) {
+                   var price = days * {{product.price_july}};
+                   $("#TextBox3").val(price);
+                } else if( ay == 8 ) {
+                   var price = days * {{product.price_agust}};
+                   $("#TextBox3").val(price);
+                } else if( ay == 9 ) {
+                   var price = days * {{product.price_sept}};
+                   $("#TextBox3").val(price);
+                } else if( ay == 10 ) {
+                   var price = days * {{product.price_octo}};
+                   $("#TextBox3").val(price);
+                }
+            }
+                });
+
+    });
+
+    var disabledDays = ['',];
+    $(document).ready(function(){
+        $.ajax({
+            type: 'GET',
+            url: "{% url 'pickerdate:getDates' product.id %}",
+            success : function(response){
+                var data = JSON.parse(response);
+                console.log('*******', data);
+                data.forEach(obj => {
+                    var a = obj.fields.fark;
+                    console.log('-------------', a);
+                    var c = a.split(",");
+                    console.log('->', c)
+                    c.forEach(
+                        element =>
+                        disabledDays.push(element)
+                    );
+                    console.log('wwwww',disabledDays)
+                });
+            },
+            error: function(response){
+
+            }
+        });
+    });
+    /* utility functions */
+    function nationalDays(date) {
+        var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+        for (i = 0; i < disabledDays.length; i++) {
+            if($.inArray((m+1) + '-' + d + '-' + y,disabledDays) != -1 || new Date() > date) {
+                return [false];
+            }
+        }
+        return [true];
+    }
+
+</script>
+
+{% endblock %}
+<br>
+<br>
+<br>
+<br>
+<br>
+{% for x in disable %}
+{{x.enter_date}}
+{{x.name}}
+{% endfor %}
+<br>
+<br>
+
+<h1>{{ product.id}}</h1>
+
+<div class="container">
+    <div class="row">
+        <form method="post">
+            {% csrf_token %}
+            {{form |crispy}}
+            <button type="submit"> Gönder</button>
+        </form>
+    </div>
+</div>

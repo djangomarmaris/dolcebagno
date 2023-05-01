@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+
+{% block seo %}
+
+
+
+{% endblock %}
+
+{% block content %}
+
+
+<div class="breadcrumb-area pt-35 pb-35 bg-gray">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <ul>
+                    <li>
+                        <a href="index.html">{{product.name}}</a>
+                    </li>
+                    <li class="active">Product Details </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="product-details-area pt-100 pb-65">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="box-slider-active nav-style-1 owl-carousel product-details-img">
+                        {% for product in images %}
+                        <div class="single-img-gallery mb-30 zoompro-span">
+                            <a class="img-popup" href="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt=""/></a>
+                            <span>-29%</span>
+                        </div>
+                        {% endfor %}
+                        <div class="single-img-gallery mb-30 zoompro-span">
+                            <a class="img-popup" href="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt=""/></a>
+                            <span>-10%</span>
+                        </div>
+                        <div class="single-img-gallery mb-30 zoompro-span">
+                            <a class="img-popup" href="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt=""/></a>
+                            <span>-30%</span>
+                        </div>
+                        <div class="single-img-gallery mb-30 zoompro-span">
+                            <a class="img-popup" href="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt=""/></a>
+                            <span>-15%</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 ms-auto me-auto">
+                    <div class="product-details-content pro-details-slider-content text-center">
+                        <h2>{{product.name}}</h2>
+                        <div class="product-details-price">
+                            <span>₺ {{product.price}} </span>
+                            <span class="old">$ {{product.price}} </span>
+                        </div>
+                        <div class="pro-details-rating-wrap">
+                            <div class="pro-details-rating">
+                                <i class="sli sli-star yellow"></i>
+                                <i class="sli sli-star yellow"></i>
+                                <i class="sli sli-star yellow"></i>
+                                <i class="sli sli-star yellow"></i>
+                                <i class="sli sli-star yellow"></i>
+                            </div>
+                        </div>
+                        <p>{{product.info | safe}}</p>
+                        <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                            {% csrf_token %}
+                        <div class="pro-details-quality">
+                            <div class="cart-plus-minus">
+                                <input class="cart-plus-minus-box" type="text" name="quantity" value="1">
+                            </div>
+                            <div class="pro-details-cart btn-hover">
+                                <button type="submit" style="background-color: black;border: none;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;">Add to cart</button>
+                            </div>
+                        </div>
+                        </form>
+                        <div class="pro-details-meta">
+                            <span>Categories :</span>
+                            <ul>
+                                <li><a href="#">{{product.category}},</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block jss %}
+
+{% endblock %}

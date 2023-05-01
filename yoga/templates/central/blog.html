@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block seo %}
+
+
+<title>Yayın Evi</title>
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="" />
+
+<link rel="canonical" href=""/>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<meta name="robots" content="index,follow"/>
+
+<meta name="googlebot" content="index,follow"/>
+
+<meta name="author" content="İhsan Gürol Demirtaş">
+
+<meta name="publisher" content="2020.01" />
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+
+<div class="breadcrumb-area pt-35 pb-35 bg-gray">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <ul>
+                    <li>
+                        <a href="index.html">Blog</a>
+                    </li>
+                    <li class="active">Yazılarımız</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-area pt-50 pb-65">
+        <div class="container">
+            <div class="section-title text-center pb-60">
+                <h2>Blog </h2>
+            </div>
+            <div class="row">
+                {% for product in blogs %}
+                <div class="col-lg-6 col-md-6">
+                    <div class="blog-wrap mb-30 mr-20 text-center scroll-zoom">
+                        <div class="blog-img mb-25">
+                            <a href="{{product.get_absolute_url}}"><img src="{% if product.image %}{{ product.image.url }}{% else %}{% endif %}" alt=""></a>
+                        </div>
+                        <div class="blog-content">
+                            <h3><a href="{{product.get_absolute_url}}">{{product.title}}</a></h3>
+                                <br>
+                            <p>{{product.mini_info | safe}}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+{% block jss %}
+{% endblock %}

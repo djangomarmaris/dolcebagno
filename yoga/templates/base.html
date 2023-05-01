@@ -1,0 +1,79 @@
+<!doctype html>
+{% load static i18n %}
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Void</title>
+    {% block css%}
+    {% endblock%}
+
+
+     <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/icons.min.css' %}">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <!-- Modernizer JS -->
+    <script src="{% static 'assets/js/vendor/modernizr-3.11.7.min.js' %}"></script>
+
+
+
+    {% block seo %}
+
+    {% endblock %}
+</head>
+
+<body>
+
+
+
+
+
+
+{% include "navbar.html" %}
+{% block content %}
+
+
+
+{% endblock %}
+{% include "footer.html" %}
+
+
+
+
+
+
+{% block jss %}
+
+{% endblock %}
+
+<!-- All JS is here
+============================================ -->
+
+<!-- jQuery JS -->
+<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<!-- Popper JS -->
+<script src="{% static 'assets/js/popper.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<!-- Plugins JS -->
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<!-- Ajax Mail -->
+<script src="{% static 'assets/js/ajax-mail.js' %}"></script>
+<!-- Main JS -->
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+</html>

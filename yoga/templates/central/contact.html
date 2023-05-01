@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% load static i18n %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block seo %}
+
+
+<title>İletişim</title>
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="" />
+
+<link rel="canonical" href=""/>
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<meta name="robots" content="index,follow"/>
+
+<meta name="googlebot" content="index,follow"/>
+
+<meta name="author" content="İhsan Gürol Demirtaş">
+
+<meta name="publisher" content="2020.01" />
+
+{% endblock %}
+
+
+
+
+{% block content %}
+
+<div class="breadcrumb-area pt-35 pb-35 bg-gray">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <ul>
+                    <li>
+                        <a href="/">Ana Sayfa</a>
+                    </li>
+                    <li class="active">İletişim</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="contact-area pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6">
+                    <div class="contact-info-area">
+                        <h2>Bize Ulaşın</h2>
+                        <div class="contact-info-wrap">
+                            <div class="single-contact-info">
+                                <div class="contact-info-icon">
+                                    <i class="sli sli-location-pin"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <p>Address goes here,  street, Crossroad 123.</p>
+                                </div>
+                            </div>
+                            <div class="single-contact-info">
+                                <div class="contact-info-icon">
+                                    <i class="sli sli-envelope"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <p><a href="#">info@example.com</a> / <a href="#">info@example.com</a></p>
+                                </div>
+                            </div>
+                            <div class="single-contact-info">
+                                <div class="contact-info-icon">
+                                    <i class="sli sli-screen-smartphone"></i>
+                                </div>
+                                <div class="contact-info-content">
+                                    <p>+1 35 776 859 000  /  +1 35 776 859 011</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-6">
+                    <div class="contact-from contact-shadow">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input name="name" type="text" placeholder="İsim Soyisim">
+                            <input name="email" type="email" placeholder="Email">
+                            <input name="info" type="text" placeholder="Konu">
+                            <textarea name="subject" placeholder="Mesajınız"></textarea>
+                            <button name="btnSubmit" class="submit" type="submit">Gönder</button>
+                        </form>
+                        <p class="form-messege"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block jss %}
+{% endblock %}
