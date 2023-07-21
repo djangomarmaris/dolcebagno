@@ -1,0 +1,27 @@
+{
+    "name": "Defectıve Sound",
+    "short_name": "Defectıve Sound",
+    "start_url": "http://127.0.0.1:8000/",
+    "scope": "http://127.0.0.1:8000/",
+    "display": "standalone",
+    "background_color": "#FFF",
+    "theme_color": "#C20D1D",
+    "description": "http://127.0.0.1:8000/",
+    "dir": "ltr",
+    "lang": "en-US",
+    "orientation": "portrait-primary",
+    "icons": [{
+          "src": "/static/512.png",
+          "type": "image/png",
+          "sizes": "512x512"
+    },
+        {
+        "src": "/static/pwa/img/fav.png",
+        "type": "image/png",
+        "sizes": "160x160"
+    }, {
+        "src": "/static/pwa/img/fav.png",
+        "type": "image/png",
+        "sizes": "160x160"
+    }]
+}

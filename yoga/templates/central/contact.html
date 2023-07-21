@@ -39,9 +39,9 @@
             <div class="breadcrumb-content text-center">
                 <ul>
                     <li>
-                        <a href="/">Ana Sayfa</a>
+                        <a href="/">Home</a>
                     </li>
-                    <li class="active">İletişim</li>
+                    <li class="active">Contact</li>
                 </ul>
             </div>
         </div>
@@ -84,11 +84,11 @@
                     <div class="contact-from contact-shadow">
                         <form method="post">
                             {% csrf_token %}
-                            <input name="name" type="text" placeholder="İsim Soyisim">
+                            <input name="name" type="text" placeholder="Name">
                             <input name="email" type="email" placeholder="Email">
-                            <input name="info" type="text" placeholder="Konu">
-                            <textarea name="subject" placeholder="Mesajınız"></textarea>
-                            <button name="btnSubmit" class="submit" type="submit">Gönder</button>
+                            <input name="info" type="text" placeholder="Subject">
+                            <textarea name="subject" placeholder="Messages"></textarea>
+                            <button name="btnSubmit" class="submit" type="submit">Send</button>
                         </form>
                         <p class="form-messege"></p>
                     </div>
@@ -96,6 +96,14 @@
             </div>
         </div>
     </div>
+
+
+<div class="container">
+    <div class="row">
+
+    </div>
+</div>
+
 {% endblock %}
 
 

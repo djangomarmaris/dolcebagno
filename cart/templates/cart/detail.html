@@ -38,12 +38,12 @@
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>Resim</th>
-                                        <th>Ürün İsmi</th>
-                                        <th>Fiyat</th>
-                                        <th>Miktar</th>
-                                        <th>Toplam</th>
-                                        <th>action</th>
+                                        <th>Pic.</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Total</th>
+                                        <th>Update</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,10 +90,10 @@
                         <div class="col-lg-4 col-md-12">
                             <div class="grand-totall">
                                 <div class="title-wrap">
-                                    <h4 class="cart-bottom-title section-bg-gary-cart">Genel Toplam</h4>
+                                    <h4 class="cart-bottom-title section-bg-gary-cart">Grand Total</h4>
                                 </div>
-                                <h5>Toplam(KDV Dahil):<span>₺  {{ cart.get_total_price }}</span></h5>
-                                <a href="{% url 'orders:order_create' %}">Hemen Öde </a>
+                                <h5>With Tax Price:<span>₺  {{ cart.get_total_price }}</span></h5>
+                                <a href="{% url 'orders:order_create' %}">Pay Now </a>
                             </div>
                         </div>
                     </div>

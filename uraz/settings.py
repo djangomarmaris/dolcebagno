@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'yoga',
     'shop',
     'orders',
+    'pwa',
 
 ]
 
@@ -169,3 +170,45 @@ CART_SESSION_ID = 'cart'
 
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+
+
+#PWA_APP_NAME = 'Defectıve Sound'
+#PWA_APP_DESCRIPTION = "Void Ses Sistemleri"
+#PWA_APP_THEME_COLOR = '#C20D1D'
+#PWA_APP_BACKGROUND_COLOR = '#ffffff'
+#PWA_APP_DISPLAY = 'standalone'
+#PWA_APP_SCOPE = 'http://127.0.0.1:8000/'
+#PWA_APP_ORIENTATION = 'any'
+#PWA_APP_START_URL = 'http://127.0.0.1:8000/'
+#PWA_APP_STATUS_BAR_COLOR = 'default'
+#PWA_APP_ICONS = [
+#    {
+#        'src': '/static/pwa/img/fav.png',
+#        'sizes': '160x160'
+#    },
+#    {
+#        'src': '/static/pwa/img/512.png',
+#        'sizes': '512x512'
+#    },
+#]
+#PWA_APP_ICONS_APPLE = [
+#    {
+#        'src': '/static/pwa/img/fav.png',
+#        'sizes': '160x160'
+#    },
+#    {
+#        'src': '/static/pwa/img/512.png',
+#        'sizes': '512x512'
+#    },
+#]
+#PWA_APP_SPLASH_SCREEN = [
+#    {
+#        'src': '/static/pwa/img/fav.png',
+#        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+#    }
+#]
+#PWA_APP_DIR = 'ltr'
+#PWA_APP_LANG = 'en-US'
+
+#PWA_SERVICE_WORKER_PATH = 'static/pwa/js/sw.js'
+
