@@ -7,7 +7,7 @@
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo pt-40">
                             <a href="/">
-                                <img width="200" src="{% static 'logomain.png' %}" alt="">
+                                <img width="200" style="margin:-15px;" src="{% static '3.png' %}" alt="">
                             </a>
                         </div>
                     </div>
@@ -15,19 +15,19 @@
                         <div class="main-menu">
                             <nav>
                                 <ul>
-                                    <li class="angle-shape"><a href="/">Home </a>
+                                    <li class="angle-shape"><a href="/">Ana Sayfa </a>
                                     </li>
-                                    <li class="angle-shape"><a href="#">Products</a>
+                                    <li class="angle-shape"><a href="#">Ürünler</a>
                                         <ul class="submenu">
                                             {% for product in cate %}
                                             <li><a href="{{product.get_absolute_url}}">{{product.name}}</a></li>
                                             {% endfor %}
                                         </ul>
                                     </li>
-                                    <li><a href="/about/">About</a></li>
+                                    <li><a href="/about/">Hakkımızda</a></li>
                                     <li class="angle-shape"><a href="/blog/list/"> Blog </a>
                                     </li>
-                                    <li><a href="/contact/"> Contact </a></li>
+                                    <li><a href="/contact/"> İletişim </a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -127,7 +127,7 @@
                     <div class="col-6">
                         <div class="mobile-logo">
                             <a href="/">
-                                <img width="200" src="{% static 'logomain.png' %}">
+                                <img width="200px;" src="{% static '3.png' %}">
                             </a>
                         </div>
                     </div>
@@ -184,9 +184,9 @@
                     <!-- mobile menu navigation start -->
                     <nav>
                         <ul class="mobile-menu">
-                            <li class="menu-item-has-children"><a href="index.html">Home</a>
+                            <li class="menu-item-has-children"><a href="/">Ana Sayfa</a>
                             </li>
-                            <li class="menu-item-has-children "><a href="shop.html">Void</a>
+                            <li class="menu-item-has-children "><a href="/">Ürünler</a>
                                 <ul class="dropdown">
                                     {% for product in cate %}
                                     <li class="menu-item-has-children"><a href="{{product.get_absolute_url}}">{{product.name}}</a>
@@ -194,9 +194,9 @@
                                     {% endfor %}
                                 </ul>
                             </li>
-                            <li><a href="/about/">About </a></li>
+                            <li><a href="/about/">Hakkımızda </a></li>
                             <li><a href="/blog/list/">Blog </a></li>
-                            <li><a href="/contact/">Contact</a></li>
+                            <li><a href="/contact/">İletişim</a></li>
                         </ul>
                     </nav>
                     <!-- mobile menu navigation end -->
@@ -209,7 +209,7 @@
                     <a class="mobile-account-active" href="#">My Account <i class="sli sli-arrow-down"></i></a>
                     <div class="lang-curr-dropdown account-dropdown-active">
                         <ul>
-                            <li><a href="login-register.html">Logout</a></li>
+                            <li><a href="/user/logout/">Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -220,8 +220,8 @@
                     <a class="mobile-account-active" href="#">My Account <i class="sli sli-arrow-down"></i></a>
                     <div class="lang-curr-dropdown account-dropdown-active">
                         <ul>
-                            <li><a href="login-register.html">Login</a></li>
-                            <li><a href="login-register.html">Register</a></li>
+                            <li><a href="/user/login/">Login</a></li>
+                            <li><a href="/user/register/">Kayıt</a></li>
                         </ul>
                     </div>
                 </div>

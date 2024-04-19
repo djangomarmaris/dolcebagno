@@ -41,7 +41,7 @@ admin.site.register(Rules,RulesAdmin)
 admin.site.register(Slider,SliderAdmin)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Product,ProductAdmin)
-admin.site.site_header = 'VOİD / Developer @ İhsan Gürol Demirtaş'
+admin.site.site_header = 'VOİD / Developer @ '
 
 
 
